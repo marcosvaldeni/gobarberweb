@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi';
+import { Form } from '@unform/web';
 
 import logoImg from '../../assets/logo.svg';
 
@@ -8,35 +9,41 @@ import Button from '../../components/Button';
 
 import { Container, Content, Background } from './styles';
 
-const SignUp: React.FC = () => (
-  <Container>
-    <Background />
-    <Content>
-      <img src={logoImg} alt="Gobarber" />
+const SignUp: React.FC = () => {
+  function handleSubmit(data: object): void {
+    console.log(data);
+  }
 
-      <form>
-        <h1>Sign In</h1>
+  return (
+    <Container>
+      <Background />
+      <Content>
+        <img src={logoImg} alt="Gobarber" />
 
-        <Input name="email" icon={FiUser} placeholder="Name" />
+        <Form onSubmit={handleSubmit}>
+          <h1>Sign In</h1>
 
-        <Input name="email" icon={FiMail} type="email" placeholder="Email" />
+          <Input name="name" icon={FiUser} placeholder="Name" />
 
-        <Input
-          name="password"
-          icon={FiLock}
-          type="password"
-          placeholder="Password"
-        />
+          <Input name="email" icon={FiMail} type="email" placeholder="Email" />
 
-        <Button type="submit">Save</Button>
-      </form>
+          <Input
+            name="password"
+            icon={FiLock}
+            type="password"
+            placeholder="Password"
+          />
 
-      <a href="login">
-        <FiArrowLeft />
-        Back to Login
-      </a>
-    </Content>
-  </Container>
-);
+          <Button type="submit">Save</Button>
+        </Form>
+
+        <a href="login">
+          <FiArrowLeft />
+          Back to Login
+        </a>
+      </Content>
+    </Container>
+  );
+};
 
 export default SignUp;
