@@ -52,7 +52,11 @@ const SignIn: React.FC = () => {
 
           formRef.current?.setErrors(errors);
         }
-        addToast();
+        addToast({
+          type: 'error',
+          title: 'authentication error',
+          description: 'There was an error signing in, check credentials',
+        });
       }
     },
     [signIn, addToast],
@@ -62,7 +66,6 @@ const SignIn: React.FC = () => {
     <Container>
       <Content>
         <img src={logoImg} alt="Gobarber" />
-
         <Form ref={formRef} onSubmit={handleSubmit}>
           <h1>Log In</h1>
 
@@ -79,7 +82,6 @@ const SignIn: React.FC = () => {
 
           <a href="forgot">Fogoten Password</a>
         </Form>
-
         <a href="dfsf">
           <FiLogIn />
           Sing In
